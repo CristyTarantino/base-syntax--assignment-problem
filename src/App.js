@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import './Components/UserOutput';
-import UserOutput from "./Components/UserOutput";
-import UserInput from "./Components/UserInput";
+
+import UserOutput from "./UserOutput/UserOutput";
+import UserInput from "./UserInput/UserInput";
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class App extends Component {
     }
   }
   
-  setNameHandler = (id, value) => {
+  usernameChangedHandler = (id, value) => {
     let newUsernames = this.state.usernames.map(item => {
       if (item.id === id) {
         item.username = value;
@@ -46,13 +46,22 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <div style={formStyle} className="App-content">
-          <UserInput handleChange={this.setNameHandler} username={this.state.usernames[0].username} id={this.state.usernames[0].id}/>
+          <UserInput
+            handleChange={this.usernameChangedHandler}
+            username={this.state.usernames[0].username}
+            id={this.state.usernames[0].id}/>
           <UserOutput username={this.state.usernames[0].username}/>
     
-          <UserInput handleChange={this.setNameHandler} username={this.state.usernames[1].username} id={this.state.usernames[1].id}/>
+          <UserInput
+            handleChange={this.usernameChangedHandler}
+            username={this.state.usernames[1].username}
+            id={this.state.usernames[1].id}/>
           <UserOutput username={this.state.usernames[1].username}/>
     
-          <UserInput handleChange={this.setNameHandler} username={this.state.usernames[2].username} id={this.state.usernames[2].id}/>
+          <UserInput
+            handleChange={this.usernameChangedHandler}
+            username={this.state.usernames[2].username}
+            id={this.state.usernames[2].id}/>
           <UserOutput username={this.state.usernames[2].username}/>
         </div>
       </div>
